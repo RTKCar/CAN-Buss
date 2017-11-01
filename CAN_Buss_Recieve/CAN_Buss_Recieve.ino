@@ -13,12 +13,15 @@ MCP_CAN CAN0(10);                               // Set CS to pin 10
 void setup()
 {
   Serial.begin(115200);
+  delay(1000);
   
   // Initialize MCP2515 running at 16MHz with a baudrate of 500kb/s and the masks and filters disabled.
-  if(CAN0.begin(MCP_ANY, CAN_500KBPS, MCP_16MHZ) == CAN_OK)
+  if(CAN0.begin(MCP_ANY, CAN_500KBPS, MCP_16MHZ) == CAN_OK){
     Serial.println("MCP2515 Initialized Successfully!");
-  else
+    }
+  else{
     Serial.println("Error Initializing MCP2515...");
+    }
   
   CAN0.setMode(MCP_NORMAL);                     // Set operation mode to normal so the MCP2515 sends acks to received data.
 
