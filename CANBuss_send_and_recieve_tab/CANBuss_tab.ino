@@ -7,7 +7,7 @@ unsigned char rxBuf[8];
 char msgString[128];                            // Array to store serial string
 #define CAN0_INT 2                              // Set INT to pin 2
 MCP_CAN CAN0(10);                               // Set CS to pin 10
-byte data[8] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
+byte data[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 int sendId;
 
 void SetupCANBuss(){
@@ -62,3 +62,15 @@ void SendData(){
     Serial.println("Error Sending Message...");
   }
 }
+void setData(char Data[]){
+  for(int i=0;i<8;i++)
+    data[i]=Data[i];
+  
+  }
+void printdata(){
+  for(int i=0;i<8;i++){
+    Serial.print(data[i]);
+    Serial.print(":");
+  }
+  
+  }  
